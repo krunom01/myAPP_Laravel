@@ -12,19 +12,14 @@
 */
 
 Route::get('/', 'PagesController@index');
+Route::get('/about', 'PagesController@about');
+Route::get('/categories', 'PagesController@categories');
+Route::get('/contact', 'PagesController@contact');
+Route::get('/employees', 'PagesController@employees');
+Route::get('/trainings', 'PagesController@trainings');
+Route::get('/login', 'PagesController@login');
 
-Route::get('/about', function () {
-   return view('pages.about');
-});
-route::get('/employees',function (){
-    return view('pages.employees');
-});
-route::get('/contact',function (){
-    return view('pages.contact');
-});
-route::get('/trainings',function (){
-    return view('pages.trainings');
-});
-route::get('/categories',function (){
-    return view('pages.categories');
-});
+Route::resource('employees','EmployeesController');
+
+
+

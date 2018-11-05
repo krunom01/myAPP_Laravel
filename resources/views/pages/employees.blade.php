@@ -1,1 +1,1 @@
-This is employees page!
+@extends ('pageParts.main')

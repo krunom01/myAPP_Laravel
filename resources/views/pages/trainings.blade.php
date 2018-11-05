@@ -1,1 +1,1 @@
-This is page for training!
+@extends ('pageParts.main')

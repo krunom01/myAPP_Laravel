@@ -1,1 +1,5 @@
-This is page for contact!
+@extends ('pageParts.main')
+
+@section('content')
+<p>contact</p>
+@endsection
