@@ -15,9 +15,6 @@ class PagesController extends Controller
     public function contact(){
         return view('pages.contact');
     }
-    public function employees(){
-        return view('pages.employees');
-    }
     public function trainings(){
         return view('pages.trainings');
     }

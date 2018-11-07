@@ -7,6 +7,7 @@
       
     <div class="container">  
       @include('pageParts.header')
+        @include('pageParts.message')
          @yield('content')
       @include('pageParts.footer')
     </div>
