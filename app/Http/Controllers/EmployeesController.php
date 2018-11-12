@@ -62,8 +62,7 @@ class employeesController extends Controller
      */
     public function show($id)
     {
-        $employees = employees::find($id);
-        return view('employees.show')->with('employees',$employees);
+        
     }
 
     /**
@@ -74,7 +73,8 @@ class employeesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $employees = employees::find($id);
+        return view('employees.edit')->with('employees',$employees);
     }
 
     /**
@@ -86,7 +86,18 @@ class employeesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this-> validate($request, [
+            'name' => 'required|max:10',
+            'surname' => 'required',
+            'email' => 'required'
+        ]);
+        $employee = Employees::find($id);
+        $employee->name = $request->input('name');
+        $employee->surname = $request->input('surname');
+        $employee->email = $request->input('email');
+        $employee->save();
+
+        return redirect('/employees')->with('success', 'employee updated!');
     }
 
     /**
@@ -97,6 +108,9 @@ class employeesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $employee = Employees::find($id);
+        $employee->delete();
+        return redirect('/employees')->with('success', 'employee deleted!');
+
     }
 }
