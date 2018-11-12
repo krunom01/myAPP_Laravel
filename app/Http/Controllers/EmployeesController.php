@@ -41,9 +41,9 @@ class employeesController extends Controller
     public function store(Request $request)
     {
         $this-> validate($request, [
-            'name' => 'required|max:10',
-            'surname' => 'required',
-            'email' => 'required'
+            'name' => 'required|min:3|max:20|alpha',
+            'surname' => 'required|min:3|max:20|alpha',
+            'email' => 'required|unique:employees,email|email'
         ]);
         $employee = new employees;
         $employee->name = $request->input('name');
@@ -86,10 +86,12 @@ class employeesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $employees = Employees::find($id);
         $this-> validate($request, [
-            'name' => 'required|max:10',
-            'surname' => 'required',
-            'email' => 'required'
+            'name' => 'required|min:3|max:20|alpha',
+            'surname' => 'required|min:3|max:20|alpha',
+            'email' => 'required|string|email|max:255|unique:employees,email,'.$employees->id
+            
         ]);
         $employee = Employees::find($id);
         $employee->name = $request->input('name');

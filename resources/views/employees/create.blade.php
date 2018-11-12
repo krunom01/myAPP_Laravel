@@ -12,7 +12,7 @@
     </div>
     <div class="form-group">
         {{Form::label('email', 'email')}}
-        {{Form::email('email', '',  ['class' => 'form-control'])}}
+        {{Form::text('email', '',  ['class' => 'form-control'])}}
     </div>
     {{Form::submit('submit', ['class'  => 'btn btn-danger'])}}
 {!! Form::close() !!}
