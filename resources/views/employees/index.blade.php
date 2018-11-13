@@ -21,6 +21,7 @@
                     <td>{{$employee->name}}</td>
                     <td>{{$employee->surname}}</td>
                     <td>{{$employee->email}}</td>
+                    <td>{{$employee->workingplace}}</td>
                     <td>  
                     <a href="/employees/{{$employee->id}}/edit" class="btn btn-primary a-btn-slide-text">
                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>

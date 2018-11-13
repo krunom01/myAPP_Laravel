@@ -43,12 +43,15 @@ class employeesController extends Controller
         $this-> validate($request, [
             'name' => 'required|min:3|max:20|alpha',
             'surname' => 'required|min:3|max:20|alpha',
-            'email' => 'required|unique:employees,email|email'
+            'email' => 'required|unique:employees,email|email',
+            'workingplace' => 'required|in:coach,worker,board'
+            
         ]);
         $employee = new employees;
         $employee->name = $request->input('name');
         $employee->surname = $request->input('surname');
         $employee->email = $request->input('email');
+        $employee->workingplace = $request->input('workingplace');
         $employee->save();
 
         return redirect('/employees')->with('success', 'new employee created!');
@@ -90,13 +93,15 @@ class employeesController extends Controller
         $this-> validate($request, [
             'name' => 'required|min:3|max:20|alpha',
             'surname' => 'required|min:3|max:20|alpha',
-            'email' => 'required|string|email|max:255|unique:employees,email,'.$employees->id
+            'email' => 'required|string|email|max:255|unique:employees,email,'.$employees->id,
+            'workingplace' => 'required|in:coach,worker,board'
             
         ]);
         $employee = Employees::find($id);
         $employee->name = $request->input('name');
         $employee->surname = $request->input('surname');
         $employee->email = $request->input('email');
+        $employee->workingplace = $request->input('workingplace');
         $employee->save();
 
         return redirect('/employees')->with('success', 'employee updated!');

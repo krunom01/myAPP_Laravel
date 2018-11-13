@@ -15,6 +15,11 @@
         {{Form::label('email', 'email')}}
         {{Form::email('email', $employees->email,  ['class' => 'form-control'])}}
     </div>
+    {{"Working place:"}}
+    <div class="form-group">
+        {{Form::select('workingplace', ['coach' => 'Coach', 'worker' => 'Worker', 'board' => 'Member of the Board'], $employees->workingplace, ['workingplace' => 'workingplace'])}}
+       
+    </div>
     {{Form::hidden('_method', 'PUT')}}
     {{Form::submit('submit', ['class'  => 'btn btn-danger'])}}
 {!! Form::close() !!}
