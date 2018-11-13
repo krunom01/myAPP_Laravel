@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\employees;
+use App\coaches;
 use Schema;
 
 class employeesController extends Controller
@@ -54,6 +55,13 @@ class employeesController extends Controller
         $employee->workingplace = $request->input('workingplace');
         $employee->save();
 
+        if($employee->workingplace==="coach"){
+            $coach = new coaches;
+            
+            $coach->employee_id =$employee->id;
+            $coach->save();
+        }
+
         return redirect('/employees')->with('success', 'new employee created!');
     }
 
@@ -103,6 +111,8 @@ class employeesController extends Controller
         $employee->email = $request->input('email');
         $employee->workingplace = $request->input('workingplace');
         $employee->save();
+
+        
 
         return redirect('/employees')->with('success', 'employee updated!');
     }
