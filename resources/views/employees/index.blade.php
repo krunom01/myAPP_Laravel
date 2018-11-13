@@ -10,7 +10,7 @@
                         <th scope="col">{{$column}}</th>
                     @endif
                 @endforeach
-                <th></th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
