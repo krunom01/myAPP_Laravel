@@ -19,6 +19,7 @@ Route::get('/trainings', 'PagesController@trainings');
 Route::get('/login', 'PagesController@login');
 
 Route::resource('employees','EmployeesController');
+Route::resource('coaches','CoachesController');
 
 
 

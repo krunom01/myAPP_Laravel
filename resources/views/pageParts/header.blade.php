@@ -31,6 +31,7 @@
             <li class="nav-item"> <a class="nav-link" href="/categories">categories</a> </li>
             <li class="nav-item"> <a class="nav-link" href="/contact">contact</a> </li>
             <li class="nav-item"> <a class="nav-link" href="/employees">employees</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="/coaches">coaches</a> </li>
             <li class="nav-item"> <a class="nav-link" href="/trainings">trainings</a> </li>
             <li class="nav-item"> <a class="nav-link" href="/login">login</a> </li>
           </ul>

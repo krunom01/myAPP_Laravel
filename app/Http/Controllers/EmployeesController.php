@@ -57,8 +57,7 @@ class employeesController extends Controller
 
         if($employee->workingplace==="coach"){
             $coach = new coaches;
-            
-            $coach->employee_id =$employee->id;
+            $coach->employee_id = $employee->id;
             $coach->save();
         }
 
@@ -126,7 +125,7 @@ class employeesController extends Controller
     public function destroy($id)
     {
         $employee = Employees::find($id);
-        $employee->delete();
+        $employee->delete(); 
         return redirect('/employees')->with('success', 'employee deleted!');
 
     }

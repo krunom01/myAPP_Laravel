@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\coaches;
+use Schema;
 
 class CoachesController extends Controller
 {
@@ -13,7 +16,12 @@ class CoachesController extends Controller
      */
     public function index()
     {
-        //
+       $coaches=DB::table('coaches')
+                ->join('employees', 'employee_id', '=', 'employees.id')
+                ->select('coaches.*', 'employees.name', 'employees.surname', 'employees.email')
+                ->get();
+        $columns = Schema::getColumnListing('employees');
+        return view('coaches.index')->with('coaches', $coaches)->with('columns', $columns);
     }
 
     /**
