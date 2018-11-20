@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\employees;
 use App\coaches;
 use Schema;
+use DB;
 
 class employeesController extends Controller
 {
@@ -111,10 +112,26 @@ class employeesController extends Controller
         $employee->workingplace = $request->input('workingplace');
         $employee->save();
 
-        
-
+        $coaches = DB::select("select * from coaches where employee_id = '$employee->id'");
+        if($employee->workingplace == "coach")
+        {
+               if(empty($coaches))
+               {
+                   $coach = new Coaches;
+                   $coach->employee_id = $employee->id;
+                   $coach->save();
+               }            
+        }
+        else{
+               if(!empty($coaches))
+               {
+                Coaches::where('employee_id', $employee->id)->delete();
+               }  
+        }
         return redirect('/employees')->with('success', 'employee updated!');
+        
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -127,6 +144,5 @@ class employeesController extends Controller
         $employee = Employees::find($id);
         $employee->delete(); 
         return redirect('/employees')->with('success', 'employee deleted!');
-
     }
 }
